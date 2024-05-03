@@ -1,4 +1,5 @@
-import { signIn, signOut } from "@/auth.ts";
+import { signIn, signOut, auth } from "@/auth.ts";
+import Image from "next/image";
 
 function SignIn() {
   return (
@@ -30,10 +31,31 @@ function SignOut() {
   );
 }
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
+  if (!session?.user) {
+    return (
+      <main>
+        <p>Not signed in</p>
+        <SignIn />
+      </main>
+    );
+  }
+
   return (
     <main>
-      <SignIn />
+      <p>Hi, {session.user.name}</p>
+      <div className="avatar online">
+        <div className="rounded-full w-24">
+          <Image
+            src={session.user.image!}
+            alt="User Avatar"
+            width={50}
+            height={50}
+          />
+        </div>
+      </div>
       <SignOut />
     </main>
   );
