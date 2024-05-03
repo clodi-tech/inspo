@@ -4,12 +4,12 @@ import "./globals.css";
 
 const font = Rajdhani({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Inspo",
-  description: "Build and share your inspiration boards",
+  description: "Build and share your inspiration",
 };
 
 export default function RootLayout({
