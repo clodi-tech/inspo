@@ -11,7 +11,7 @@ const config: Config = {
   theme: {},
   plugins: [tailwindTypography, daisyui],
   daisyui: {
-    themes: ["cupcake"],
+    themes: ["dim"],
   },
 };
 export default config;
