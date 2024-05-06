@@ -45,7 +45,11 @@ export default async function Home() {
 
   return (
     <main>
-      <p>Hi, {session.user.name}</p>
+      <article className="prose">
+        <h1>Hi</h1>
+        <h2>your name:</h2>
+        <p>{session.user.name}</p>
+      </article>
       <div className="avatar online">
         <div className="rounded-full w-24">
           <Image
