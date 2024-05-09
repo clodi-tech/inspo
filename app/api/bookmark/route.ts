@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
-  console.log("server add bookmark");
+export async function POST(req: Request) {
+  const body = await req.json();
+  console.log("server create bookmark", body);
+
   return NextResponse.json({ message: "Bookmark created" });
 }
 
