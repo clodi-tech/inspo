@@ -2,7 +2,7 @@
 
 ## Phase 1
 
-- [ ] enter link
+- [x] enter link
 - [ ] add card with link
 
 ## Phase 2

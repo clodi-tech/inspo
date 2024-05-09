@@ -24,7 +24,7 @@ export function SignOut() {
         await signOut();
       }}
     >
-      <button type="submit" className="btn btn-secondary">
+      <button type="submit" className="btn btn-secondary btn-xs">
         Sign Out
       </button>
     </form>
@@ -43,4 +43,24 @@ export function Avatar({ user }: { user: any }) {
 
 export function Logo() {
   return <Image src="/logo.svg" alt="Logo" width={30} height={30} />;
+}
+
+import { auth } from "@/auth";
+
+export async function Header() {
+  const session = await auth();
+
+  return (
+    <header className="fixed top-0 z-50 flex w-full justify-between items-center p-4">
+      <Logo />
+      {session ? (
+        <div className="flex items-center gap-2">
+          <SignOut />
+          <Avatar user={session.user} />
+        </div>
+      ) : (
+        <SignIn />
+      )}
+    </header>
+  );
 }
