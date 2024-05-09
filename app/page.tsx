@@ -1,35 +1,5 @@
-import { signIn, signOut, auth } from "@/auth.ts";
-import Image from "next/image";
-
-function SignIn() {
-  return (
-    <form
-      action={async () => {
-        "use server";
-        await signIn("github");
-      }}
-    >
-      <button type="submit" className="btn btn-primary">
-        Signin with GitHub
-      </button>
-    </form>
-  );
-}
-
-function SignOut() {
-  return (
-    <form
-      action={async () => {
-        "use server";
-        await signOut();
-      }}
-    >
-      <button type="submit" className="btn btn-secondary">
-        Sign Out
-      </button>
-    </form>
-  );
-}
+import { auth } from "@/auth";
+import { Avatar, Logo, SignIn, SignOut } from "@/ui/user";
 
 export default async function Home() {
   const session = await auth();
@@ -37,7 +7,6 @@ export default async function Home() {
   if (!session?.user) {
     return (
       <main>
-        <p>Not signed in</p>
         <SignIn />
       </main>
     );
@@ -45,21 +14,8 @@ export default async function Home() {
 
   return (
     <main>
-      <article className="prose">
-        <h1>Hi</h1>
-        <h2>your name:</h2>
-        <p>{session.user.name}</p>
-      </article>
-      <div className="avatar online">
-        <div className="rounded-full w-24">
-          <Image
-            src={session.user.image!}
-            alt="User Avatar"
-            width={50}
-            height={50}
-          />
-        </div>
-      </div>
+      <Logo />
+      <Avatar user={session.user} />
       <SignOut />
     </main>
   );

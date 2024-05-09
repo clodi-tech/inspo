@@ -9,7 +9,7 @@ import postgres from "postgres";
 import { drizzle } from "drizzle-orm/postgres-js";
 import type { AdapterAccount } from "next-auth/adapters";
 
-const connectionString = process.env.DATABASE_URL!;
+const connectionString = process.env.AUTH_DRIZZLE_URL!;
 const pool = postgres(connectionString, { max: 1 });
 
 export const db = drizzle(pool);
