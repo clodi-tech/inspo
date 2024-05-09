@@ -5,8 +5,20 @@ import { useState } from "react";
 export default function Bookmark() {
   const [bookmark, setBookmark] = useState("");
 
-  function addBookmark() {
-    console.log(bookmark);
+  async function addBookmark() {
+    const body = {
+      bookmark: bookmark,
+    };
+
+    const res = await fetch("/api/bookmark", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+
+    await res.json();
   }
 
   return (
