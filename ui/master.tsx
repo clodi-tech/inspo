@@ -51,7 +51,7 @@ export async function Header() {
   const session = await auth();
 
   return (
-    <header className="fixed top-0 z-50 flex w-full justify-between items-center p-4">
+    <header className="fixed top-0 flex w-full justify-between items-center p-4">
       <Logo />
       {session ? (
         <div className="flex items-center gap-2">

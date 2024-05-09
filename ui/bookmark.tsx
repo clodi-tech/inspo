@@ -23,12 +23,13 @@ export default function Bookmark() {
 
   return (
     <form action={addBookmark}>
-      <label className="input input-bordered flex items-center gap-2">
+      <label className="input input-bordered input-primary flex items-center gap-2">
         <input
+          autoFocus
           type="text"
           name="bookmark"
           className="grow w-80"
-          placeholder="Enter the link here"
+          placeholder="Enter your favourite link here"
           value={bookmark}
           onChange={(e) => setBookmark(e.target.value)}
         />
