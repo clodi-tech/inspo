@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { Avatar, Logo, SignIn, SignOut } from "@/ui/user";
+import { Avatar, Logo, SignIn } from "@/ui/user";
 import Bookmark from "@/ui/bookmark";
 
 export default async function Home() {
@@ -18,7 +18,6 @@ export default async function Home() {
       <Logo />
       <Avatar user={session.user} />
       <Bookmark />
-      <SignOut />
     </main>
   );
 }
