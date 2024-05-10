@@ -20,7 +20,6 @@ export default function Bookmark() {
 
     if (res.ok) {
       setBookmark("");
-      //revalidatePath("/");
     } else setBookmark("Something went wrong");
   }
 
