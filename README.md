@@ -4,12 +4,12 @@
 
 - [x] enter link
 - [x] add card with link
+- [ ] delete
 
 ## Phase 2
 
 - [ ] read metadata
 - [ ] add metadata to card
-- [ ] delete
 
 ## Phase 3
 
