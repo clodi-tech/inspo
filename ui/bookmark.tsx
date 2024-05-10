@@ -18,7 +18,10 @@ export default function Bookmark() {
       body: JSON.stringify(body),
     });
 
-    await res.json();
+    if (res.ok) {
+      setBookmark("");
+      //revalidatePath("/");
+    } else setBookmark("Something went wrong");
   }
 
   return (
