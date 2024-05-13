@@ -25,7 +25,7 @@ export async function POST(req: Request) {
 
   const res = await db.insert(inspos).values({
     userId: session?.user?.id!,
-    url: body.inspo,
+    url: result.requestUrl || body.inspo,
     title: result.ogTitle,
     description: result.ogDescription,
     image: imageUrl,

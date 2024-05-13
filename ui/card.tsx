@@ -19,8 +19,8 @@ export default function Card({ content }: { content: any }) {
           <h2 className="card-title">{content.title}</h2>
           <p>{content.description}</p>
           <div className="card-actions justify-end">
-            <a href={content.url} target="_blank">
-              <div className="btn btn-primary">Open</div>
+            <a href={content.url} target="_blank" rel="noopener">
+              <div className="btn btn-primary btn-xs">Open</div>
             </a>
             <Delete id={content.id} />
           </div>

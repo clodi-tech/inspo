@@ -23,7 +23,7 @@ export default function Delete({ id }: { id: any }) {
 
   return (
     <form action={deleteInspo}>
-      <button type="submit" className="btn btn-warning btn-xs">
+      <button type="submit" className="btn btn-error btn-xs">
         Delete
       </button>
     </form>
