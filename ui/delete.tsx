@@ -14,10 +14,10 @@ export default function Delete({ id }: { id: any }) {
       body: JSON.stringify(body),
     });
 
-    if (res.status === 200) {
-      console.log("Deleted");
+    if (!res.ok) {
+      console.error("Failed to delete inspo", res);
     } else {
-      alert("Failed to delete");
+      window.location.reload();
     }
   }
 
