@@ -10,14 +10,17 @@ const db = drizzle(sql);
 
 export async function POST(req: Request) {
   const body = await req.json();
-  console.log("server create inspo", body);
+  const url = body.inspo;
 
   const session = await auth();
-  console.log("session", session);
+
+  // get the metadata for the url
+  const html = await fetch(url).then((res) => res.text());
+  console.log("html", html);
 
   const result = await db
     .insert(inspos)
-    .values({ userId: session?.user?.id!, url: body.inspo });
+    .values({ userId: session?.user?.id!, url: url });
   console.log("insert result", result);
 
   return NextResponse.json({ message: "inspo created" });
@@ -25,10 +28,8 @@ export async function POST(req: Request) {
 
 export async function DELETE(req: NextRequest) {
   const body = await req.json();
-  console.log("server delete inspo", body);
 
-  const result = await db.delete(inspos).where(eq(inspos.id, body.id));
-  console.log("delete result", result);
+  await db.delete(inspos).where(eq(inspos.id, body.id));
 
   return NextResponse.json({ message: "inspo deleted" });
 }

@@ -16,7 +16,6 @@ async function getInspos() {
     .select()
     .from(inspos)
     .where(sql`${inspos.userId} = ${session.user?.id}`);
-  console.log(result);
 
   return result;
 }
