@@ -23,7 +23,7 @@ async function getInspos() {
 export default async function Cards() {
   const inspos = await getInspos();
   return (
-    <div className="flex flex-wrap justify-center items-center gap-2 max-w-md">
+    <div className="flex flex-wrap justify-center items-center gap-2">
       {inspos.map((inspo) => (
         <Card key={inspo.id} content={inspo} />
       ))}
