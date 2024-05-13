@@ -16,21 +16,25 @@ export async function POST(req: Request) {
 
   const options = { url: body.inspo };
   const { result } = await ogs(options);
-  console.log("og", result);
 
   let imageUrl = "/default.png";
   if (result.ogImage && result.ogImage.length > 0) {
-    imageUrl = result.ogImage[0].url;
+    try {
+      const image = await fetch(result.ogImage[0].url);
+      const contentType = image.headers.get("content-type");
+
+      if (contentType && contentType.startsWith("image"))
+        imageUrl = result.ogImage[0].url;
+    } catch (e) {}
   }
 
-  const res = await db.insert(inspos).values({
+  await db.insert(inspos).values({
     userId: session?.user?.id!,
     url: result.requestUrl || body.inspo,
     title: result.ogTitle,
     description: result.ogDescription,
     image: imageUrl,
   });
-  console.log("insert", res);
 
   return NextResponse.json({ message: "inspo created" });
 }

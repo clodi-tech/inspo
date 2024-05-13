@@ -25,8 +25,8 @@ export default function Inspo() {
 
   return (
     <div className="mt-[40%] flex flex-col justify-center items-center gap-2">
-      <h1 className="text-4xl font-bold">Save. Find. Inspire.</h1>
-      <p>Banger headline</p>
+      <h1 className="text-4xl font-bold">Save. Find. Inspire ✨</h1>
+      <p>Your favourite links with superpowers</p>
       <form action={addInspo}>
         <label className="input input-bordered input-primary flex items-center gap-2">
           <input
