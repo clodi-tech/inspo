@@ -43,6 +43,13 @@
       "when": 1715616195796,
       "tag": "0005_solid_baron_zemo",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1715617586894,
+      "tag": "0006_empty_texas_twister",
+      "breakpoints": true
     }
   ]
 }

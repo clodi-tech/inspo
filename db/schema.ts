@@ -76,7 +76,7 @@ export const inspos = pgTable("inspos", {
     .references(() => users.id, { onDelete: "cascade" }),
   url: text("url").notNull(),
   title: text("title").notNull().default("Title"),
-  description: text("description").default("Description"),
-  image: text("image").default("/logo.svg"),
+  description: text("description"),
+  image: text("image"),
   time: timestamp("time").defaultNow(),
 });
