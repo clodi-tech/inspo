@@ -5,5 +5,6 @@ export default {
   driver: "pg",
   dbCredentials: {
     connectionString: process.env.AUTH_DRIZZLE_URL!,
+    //connectionString: "",
   },
 } satisfies Config;

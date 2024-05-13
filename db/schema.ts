@@ -10,6 +10,7 @@ import { drizzle } from "drizzle-orm/neon-http";
 import type { AdapterAccount } from "next-auth/adapters";
 
 const sql = neon(process.env.AUTH_DRIZZLE_URL!);
+//const sql = neon("");
 export const db = drizzle(sql);
 
 export const users = pgTable("user", {
@@ -66,7 +67,7 @@ export const verificationTokens = pgTable(
   }),
 );
 
-export const inspos = pgTable("bookmarks", {
+export const inspos = pgTable("inspos", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
@@ -77,4 +78,5 @@ export const inspos = pgTable("bookmarks", {
   title: text("title").notNull().default("Title"),
   description: text("description").default("Description"),
   image: text("image").default("/logo.svg"),
+  time: timestamp("time").defaultNow(),
 });

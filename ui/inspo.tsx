@@ -20,6 +20,7 @@ export default function Inspo() {
 
     if (res.ok) {
       setInspo("");
+      window.location.reload();
     } else setInspo("Something went wrong");
   }
 

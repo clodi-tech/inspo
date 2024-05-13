@@ -1,6 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { sql } from "drizzle-orm";
+import { sql, desc } from "drizzle-orm";
 import { inspos } from "@/db/schema";
 import { auth } from "@/auth";
 import Card from "./card";
@@ -15,7 +15,8 @@ async function getInspos() {
   const result = await db
     .select()
     .from(inspos)
-    .where(sql`${inspos.userId} = ${session.user?.id}`);
+    .where(sql`${inspos.userId} = ${session.user?.id}`)
+    .orderBy(desc(inspos.time));
 
   return result;
 }
