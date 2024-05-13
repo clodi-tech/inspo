@@ -1,4 +1,4 @@
-export function Delete(id: string) {
+export function Delete(id: any) {
   return (
     <form
       action={async () => {
@@ -6,7 +6,7 @@ export function Delete(id: string) {
         console.log("delete inspo", id);
       }}
     >
-      <button type="submit" className="btn btn-secondary btn-xs">
+      <button type="submit" className="btn btn-warning btn-xs">
         Delete
       </button>
     </form>
