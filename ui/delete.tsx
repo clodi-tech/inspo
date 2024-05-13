@@ -1,4 +1,4 @@
-export function Delete(id: any) {
+export default function Delete(id: any) {
   return (
     <form
       action={async () => {
