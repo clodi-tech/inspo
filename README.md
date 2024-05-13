@@ -7,7 +7,7 @@
 
 ## Phase 2
 
-- [ ] read metadata
+- [x] read metadata
 - [x] add metadata to card
 - [x] delete
 
