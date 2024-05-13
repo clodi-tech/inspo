@@ -18,7 +18,7 @@ export async function POST(req: Request) {
   const { result } = await ogs(options);
   console.log("og", result);
 
-  let imageUrl = null;
+  let imageUrl = "/default.png";
   if (result.ogImage && result.ogImage.length > 0) {
     imageUrl = result.ogImage[0].url;
   }

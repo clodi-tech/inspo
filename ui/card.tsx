@@ -7,7 +7,13 @@ export default function Card({ content }: { content: any }) {
     (
       <div className="card w-96 bg-base-100 shadow-xl image-full">
         <figure>
-          <Image src={content.image} alt="image" width={100} height={100} />
+          <Image
+            src={content.image}
+            alt="image"
+            style={{ width: "100%", height: "auto" }}
+            width={1200}
+            height={630}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{content.title}</h2>
