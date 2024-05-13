@@ -4,11 +4,12 @@ import { sql } from "drizzle-orm";
 import { bookmarks } from "@/db/schema";
 import { auth } from "@/auth";
 import Image from "next/image";
+import { Delete } from "./delete";
 
 const client = neon(process.env.AUTH_DRIZZLE_URL!);
 const db = drizzle(client);
 
-async function getBookmarks() {
+async function getInspos() {
   const session = await auth();
   if (!session) return [];
 
@@ -21,13 +22,13 @@ async function getBookmarks() {
   return result;
 }
 
-export default async function Showcase() {
-  const bookmarks = await getBookmarks();
+export default async function Cards() {
+  const inspos = await getInspos();
   return (
     <div className="flex flex-wrap justify-center items-center gap-2 max-w-md">
-      {bookmarks.map((bookmark) => (
+      {inspos.map((inspo) => (
         <div
-          key={bookmark.id}
+          key={inspo.id}
           className="card w-96 bg-base-100 shadow-xl image-full"
         >
           <figure>
@@ -37,9 +38,10 @@ export default async function Showcase() {
             <h2 className="card-title">title</h2>
             <p>description</p>
             <div className="card-actions justify-end">
-              <a href={bookmark.url}>
+              <a href={inspo.url} target="_blank">
                 <div className="btn btn-primary">open link</div>
               </a>
+              <Delete id={inspo.id} />
             </div>
           </div>
         </div>

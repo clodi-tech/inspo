@@ -10,25 +10,25 @@ const db = drizzle(sql);
 
 export async function POST(req: Request) {
   const body = await req.json();
-  console.log("server create bookmark", body);
+  console.log("server create inspo", body);
 
   const session = await auth();
   console.log("session", session);
 
   const result = await db
     .insert(bookmarks)
-    .values({ userId: session?.user?.id!, url: body.bookmark });
+    .values({ userId: session?.user?.id!, url: body.inspo });
   console.log("insert result", result);
 
-  return NextResponse.json({ message: "Bookmark created" });
+  return NextResponse.json({ message: "inspo created" });
 }
 
 export async function DELETE(req: NextRequest) {
   const body = await req.json();
-  console.log("server delete bookmark", body);
+  console.log("server delete inspo", body);
 
   const result = await db.delete(bookmarks).where(eq(bookmarks.id, body.id));
   console.log("delete result", result);
 
-  return NextResponse.json({ message: "Bookmark deleted" });
+  return NextResponse.json({ message: "inspo deleted" });
 }

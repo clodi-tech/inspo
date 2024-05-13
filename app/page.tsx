@@ -1,18 +1,15 @@
 import { Header } from "@/ui/master";
-import Bookmark from "@/ui/bookmark";
+import Inspo from "@/ui/inspo";
 import Copy from "@/ui/copy";
-import Showcase from "@/ui/showcase";
-import { Suspense } from "react";
+import Cards from "@/ui/cards";
 
 export default async function Home() {
   return (
     <main>
       <Header />
       <Copy />
-      <Bookmark />
-      <Suspense fallback={<div>Loading...</div>}>
-        <Showcase />
-      </Suspense>
+      <Inspo />
+      <Cards />
     </main>
   );
 }

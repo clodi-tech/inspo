@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 
-export default function Bookmark() {
-  const [bookmark, setBookmark] = useState("");
+export default function Inspo() {
+  const [inspo, setInspo] = useState("");
 
-  async function addBookmark() {
+  async function addInspo() {
     const body = {
-      bookmark: bookmark,
+      inspo: inspo,
     };
 
-    const res = await fetch("/api/bookmark", {
+    const res = await fetch("/api/inspo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,21 +19,21 @@ export default function Bookmark() {
     });
 
     if (res.ok) {
-      setBookmark("");
-    } else setBookmark("Something went wrong");
+      setInspo("");
+    } else setInspo("Something went wrong");
   }
 
   return (
-    <form action={addBookmark}>
+    <form action={addInspo}>
       <label className="input input-bordered input-primary flex items-center gap-2">
         <input
           autoFocus
           type="text"
-          name="bookmark"
+          name="inspo"
           className="grow w-80"
           placeholder="Enter your favourite link here"
-          value={bookmark}
-          onChange={(e) => setBookmark(e.target.value)}
+          value={inspo}
+          onChange={(e) => setInspo(e.target.value)}
         />
         <kbd className="kbd kbd-sm">↵</kbd>
       </label>
