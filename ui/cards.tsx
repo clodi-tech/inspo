@@ -1,7 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { sql } from "drizzle-orm";
-import { bookmarks } from "@/db/schema";
+import { inspos } from "@/db/schema";
 import { auth } from "@/auth";
 import Card from "./card";
 
@@ -14,8 +14,8 @@ async function getInspos() {
 
   const result = await db
     .select()
-    .from(bookmarks)
-    .where(sql`${bookmarks.userId} = ${session.user?.id}`);
+    .from(inspos)
+    .where(sql`${inspos.userId} = ${session.user?.id}`);
   console.log(result);
 
   return result;

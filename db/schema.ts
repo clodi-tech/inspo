@@ -66,7 +66,7 @@ export const verificationTokens = pgTable(
   }),
 );
 
-export const bookmarks = pgTable("bookmarks", {
+export const inspos = pgTable("bookmarks", {
   id: text("id")
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
@@ -74,4 +74,7 @@ export const bookmarks = pgTable("bookmarks", {
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   url: text("url").notNull(),
+  title: text("title").notNull().default("Title"),
+  description: text("description").default("Description"),
+  image: text("image").default("/logo.svg"),
 });
