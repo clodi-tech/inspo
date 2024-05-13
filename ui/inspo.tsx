@@ -24,19 +24,23 @@ export default function Inspo() {
   }
 
   return (
-    <form action={addInspo}>
-      <label className="input input-bordered input-primary flex items-center gap-2">
-        <input
-          autoFocus
-          type="text"
-          name="inspo"
-          className="grow w-80"
-          placeholder="Enter your favourite link here"
-          value={inspo}
-          onChange={(e) => setInspo(e.target.value)}
-        />
-        <kbd className="kbd kbd-sm">↵</kbd>
-      </label>
-    </form>
+    <div className="mt-[40%] flex flex-col justify-center items-center gap-2">
+      <h1 className="text-4xl font-bold">Save. Find. Inspire.</h1>
+      <p>Banger headline</p>
+      <form action={addInspo}>
+        <label className="input input-bordered input-primary flex items-center gap-2">
+          <input
+            autoFocus
+            type="text"
+            name="inspo"
+            className="grow w-80"
+            placeholder="Enter your favourite link here"
+            value={inspo}
+            onChange={(e) => setInspo(e.target.value)}
+          />
+          <kbd className="kbd kbd-sm">↵</kbd>
+        </label>
+      </form>
+    </div>
   );
 }
