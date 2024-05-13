@@ -8,8 +8,8 @@
 ## Phase 2
 
 - [ ] read metadata
-- [ ] add metadata to card
-- [ ] delete
+- [x] add metadata to card
+- [x] delete
 
 ## Phase 3
 

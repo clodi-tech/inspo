@@ -4,24 +4,33 @@ import { drizzle } from "drizzle-orm/neon-http";
 import { eq } from "drizzle-orm";
 import { inspos } from "@/db/schema";
 import { auth } from "@/auth";
+import ogs from "open-graph-scraper";
 
 const sql = neon(process.env.AUTH_DRIZZLE_URL!);
 const db = drizzle(sql);
 
 export async function POST(req: Request) {
   const body = await req.json();
-  const url = body.inspo;
 
   const session = await auth();
 
-  // get the metadata for the url
-  const html = await fetch(url).then((res) => res.text());
-  console.log("html", html);
+  const options = { url: body.inspo };
+  const { result } = await ogs(options);
+  console.log("og", result);
 
-  const result = await db
-    .insert(inspos)
-    .values({ userId: session?.user?.id!, url: url });
-  console.log("insert result", result);
+  let imageUrl = null;
+  if (result.ogImage && result.ogImage.length > 0) {
+    imageUrl = result.ogImage[0].url;
+  }
+
+  const res = await db.insert(inspos).values({
+    userId: session?.user?.id!,
+    url: body.inspo,
+    title: result.ogTitle,
+    description: result.ogDescription,
+    image: imageUrl,
+  });
+  console.log("insert", res);
 
   return NextResponse.json({ message: "inspo created" });
 }
