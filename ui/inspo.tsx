@@ -25,7 +25,7 @@ export default function Inspo() {
   }
 
   return (
-    <div className="mt-[40%] flex flex-col justify-center items-center gap-2">
+    <div className="mt-80 flex flex-col justify-center items-center gap-2">
       <h1 className="text-4xl font-bold">Save. Find. Inspire ✨</h1>
       <p>Your favourite links with superpowers</p>
       <form action={addInspo}>
