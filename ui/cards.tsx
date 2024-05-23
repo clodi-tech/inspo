@@ -1,9 +1,8 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { sql, desc } from "drizzle-orm";
-import { inspos, tags } from "@/db/schema";
+import { inspos } from "@/db/schema";
 import { auth } from "@/auth";
-import Card from "./card";
 import Tags from "./tags";
 
 const client = neon(process.env.AUTH_DRIZZLE_URL!);
@@ -26,13 +25,14 @@ async function getTags() {
   const session = await auth();
   if (!session || !session.user?.id) return [];
 
-  //await db.insert(tags).values({ tag: "ui", userId: session.user?.id });
   const result = await db
-    .select()
-    .from(tags)
-    .where(sql`${tags.userId} = ${session.user?.id}`);
+    .selectDistinct({ tag: inspos.tag })
+    .from(inspos)
+    .where(sql`${inspos.userId} = ${session.user?.id}`);
 
-  return result;
+  // make this array of objects into an array of strings
+  const array = result.map((tag: any) => tag.tag);
+  return array;
 }
 
 export default async function Cards() {

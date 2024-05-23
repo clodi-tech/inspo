@@ -73,15 +73,5 @@ export const inspos = pgTable("inspos", {
   description: text("description"),
   image: text("image"),
   time: timestamp("time").defaultNow(),
-  tagId: text("tagId").references(() => tags.id, { onDelete: "cascade" }),
-});
-
-export const tags = pgTable("tags", {
-  id: text("id")
-    .primaryKey()
-    .$defaultFn(() => crypto.randomUUID()),
-  tag: text("tag").notNull(),
-  userId: text("userId")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+  tag: text("tag").notNull().default("none"),
 });

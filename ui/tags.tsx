@@ -3,34 +3,31 @@
 import { useState } from "react";
 import Card from "./card";
 
-type Tag = {
-  id: string;
-  tag: string;
-};
-
-export default function Tags({ tags, inspos }: { tags: Tag[]; inspos: any }) {
-  const [selected, setSelected] = useState("default");
-
-  // get the id of the selected tag
-  const selectedTag = tags.find((tag) => tag.tag === selected);
+export default function Tags({
+  tags,
+  inspos,
+}: {
+  tags: string[];
+  inspos: any;
+}) {
+  const [selected, setSelected] = useState(tags[0]);
 
   // filter the inspos based on the selected tag
-  inspos = inspos.filter((inspo: any) => inspo.tagId === selectedTag?.id);
+  inspos = inspos.filter((inspo: any) => inspo.tag === selected);
 
   return (
     <>
       <div className="flex justify-center items-center gap-2">
         {tags.map((tag) => (
           <div
-            key={tag.id}
             className={
-              tag.tag == selected
+              tag == selected
                 ? "badge badge-accent cursor-pointer"
                 : "badge badge-outline badge-accent cursor-pointer"
             }
-            onClick={() => setSelected(tag.tag)}
+            onClick={() => setSelected(tag)}
           >
-            {tag.tag}
+            {tag}
           </div>
         ))}
       </div>

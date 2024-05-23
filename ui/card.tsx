@@ -16,7 +16,8 @@ export default function Card({ content }: { content: any }) {
       <div className="card-body">
         <h2 className="card-title">{content.title}</h2>
         <p className="text-xs">{content.description}</p>
-        <div className="card-actions justify-end">
+        <div className="card-actions">
+          <div className="badge badge-accent">{content.tag}</div>
           <a href={content.url} target="_blank" rel="noopener">
             <div className="btn btn-primary btn-xs">Open</div>
           </a>
