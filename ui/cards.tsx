@@ -1,7 +1,7 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 import { sql, desc } from "drizzle-orm";
-import { inspos } from "@/db/schema";
+import { inspos, tags } from "@/db/schema";
 import { auth } from "@/auth";
 import Card from "./card";
 import Tags from "./tags";
@@ -22,12 +22,20 @@ async function getInspos() {
   return result;
 }
 
+async function getTags() {
+  //await db.insert(tags).values({ tag: "tech" });
+  const result = await db.select().from(tags);
+
+  return result;
+}
+
 export default async function Cards() {
   const inspos = await getInspos();
+  const tags = await getTags();
 
   return (
     <>
-      <Tags />
+      <Tags tags={tags} />
       <div className="flex flex-wrap justify-center items-center gap-2">
         {inspos.map((inspo) => (
           <Card key={inspo.id} content={inspo} />
