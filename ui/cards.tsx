@@ -11,7 +11,7 @@ const db = drizzle(client);
 
 async function getInspos() {
   const session = await auth();
-  if (!session) return [];
+  if (!session || !session.user?.id) return [];
 
   const result = await db
     .select()
@@ -26,8 +26,11 @@ async function getTags() {
   const session = await auth();
   if (!session || !session.user?.id) return [];
 
-  //await db.insert(tags).values({ tag: "tech", userId: session.user?.id });
-  const result = await db.select().from(tags);
+  //await db.insert(tags).values({ tag: "ui", userId: session.user?.id });
+  const result = await db
+    .select()
+    .from(tags)
+    .where(sql`${tags.userId} = ${session.user?.id}`);
 
   return result;
 }
@@ -38,12 +41,7 @@ export default async function Cards() {
 
   return (
     <>
-      <Tags tags={tags} />
-      <div className="flex flex-wrap justify-center items-center gap-2">
-        {inspos.map((inspo) => (
-          <Card key={inspo.id} content={inspo} />
-        ))}
-      </div>
+      <Tags tags={tags} inspos={inspos} />
     </>
   );
 }
