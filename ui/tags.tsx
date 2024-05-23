@@ -18,8 +18,9 @@ export default function Tags({
   return (
     <>
       <div className="flex justify-center items-center gap-2">
-        {tags.map((tag) => (
+        {tags.map((tag, i) => (
           <div
+            key={i}
             className={
               tag == selected
                 ? "badge badge-accent cursor-pointer"
