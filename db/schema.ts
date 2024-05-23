@@ -81,4 +81,7 @@ export const tags = pgTable("tags", {
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   tag: text("tag").notNull(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
 });

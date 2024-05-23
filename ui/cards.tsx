@@ -23,7 +23,10 @@ async function getInspos() {
 }
 
 async function getTags() {
-  //await db.insert(tags).values({ tag: "tech" });
+  const session = await auth();
+  if (!session || !session.user?.id) return [];
+
+  //await db.insert(tags).values({ tag: "tech", userId: session.user?.id });
   const result = await db.select().from(tags);
 
   return result;
