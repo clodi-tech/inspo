@@ -12,8 +12,8 @@ export default function Tags() {
         <div
           className={
             tag == selected
-              ? "badge badge-accent"
-              : "badge badge-outline badge-accent"
+              ? "badge badge-accent cursor-pointer"
+              : "badge badge-outline badge-accent cursor-pointer"
           }
           onClick={() => setSelected(tag)}
         >
