@@ -3,7 +3,7 @@ import { drizzle } from "drizzle-orm/neon-http";
 import { sql, desc } from "drizzle-orm";
 import { inspos } from "@/db/schema";
 import { auth } from "@/auth";
-import Tags from "./tags";
+import Content from "./content";
 
 const client = neon(process.env.AUTH_DRIZZLE_URL!);
 const db = drizzle(client);
@@ -39,9 +39,5 @@ export default async function Cards() {
   const inspos = await getInspos();
   const tags = await getTags();
 
-  return (
-    <>
-      <Tags tags={tags} inspos={inspos} />
-    </>
-  );
+  return <Content tags={tags} inspos={inspos} />;
 }

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Card from "./card";
 
-export default function Tags({
+export default function Content({
   tags,
   inspos,
 }: {
