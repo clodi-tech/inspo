@@ -1,6 +1,6 @@
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { sql, desc } from "drizzle-orm";
+import { sql, asc, desc } from "drizzle-orm";
 import { inspos } from "@/db/schema";
 import { auth } from "@/auth";
 import Content from "./content";
@@ -28,7 +28,8 @@ async function getTags() {
   const result = await db
     .selectDistinct({ tag: inspos.tag })
     .from(inspos)
-    .where(sql`${inspos.userId} = ${session.user?.id}`);
+    .where(sql`${inspos.userId} = ${session.user?.id}`)
+    .orderBy(asc(inspos.tag));
 
   // make this array of objects into an array of strings
   const array = result.map((tag: any) => tag.tag);
