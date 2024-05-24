@@ -27,5 +27,5 @@ export const saveCard = async (FormData: FormData) => {
     })
     .where(eq(inspos.id, String(id)));
 
-  console.log(result);
+  return result;
 };

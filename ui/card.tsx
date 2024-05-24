@@ -43,7 +43,17 @@ export default function Card({ content }: { content: any }) {
       </div>
       <dialog id={modalId} className="modal">
         <div className="modal-box w-full max-w-sm">
-          <form action={saveCard}>
+          <form
+            action={saveCard}
+            onSubmit={() => {
+              const modal = document.getElementById(
+                modalId
+              ) as HTMLDialogElement;
+              if (modal) {
+                modal.close();
+              }
+            }}
+          >
             <input type="hidden" name="id" value={content.id} />
             <label className="form-control w-full max-w-sm">
               <div className="label">
