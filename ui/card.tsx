@@ -6,15 +6,7 @@ export default function Card({ content }: { content: any }) {
   const modalId = `edit_card_${content.id}`;
   return (
     <>
-      <div
-        className="card max-w-sm bg-base-100 shadow-xl image-full"
-        onClick={() => {
-          const modal = document.getElementById(modalId) as HTMLDialogElement;
-          if (modal) {
-            modal.showModal();
-          }
-        }}
-      >
+      <div className="card max-w-sm bg-base-100 shadow-xl image-full">
         <figure>
           <Image
             src={content.image}
@@ -32,12 +24,25 @@ export default function Card({ content }: { content: any }) {
             <a href={content.url} target="_blank" rel="noopener">
               <div className="btn btn-primary btn-xs">Open</div>
             </a>
+            <button
+              className="btn btn-neutral btn-xs"
+              onClick={() => {
+                const modal = document.getElementById(
+                  modalId
+                ) as HTMLDialogElement;
+                if (modal) {
+                  modal.showModal();
+                }
+              }}
+            >
+              Edit
+            </button>
             <Delete id={content.id} />
           </div>
         </div>
       </div>
       <dialog id={modalId} className="modal">
-        <div className="modal-box">
+        <div className="modal-box w-full max-w-sm">
           <form action={saveCard}>
             <input type="hidden" name="id" value={content.id} />
             <label className="form-control w-full max-w-sm">
@@ -94,8 +99,11 @@ export default function Card({ content }: { content: any }) {
                 className="input input-bordered w-full max-w-sm"
               />
             </label>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-primary mt-4 mr-2">
               Save
+            </button>
+            <button type="reset" className="btn btn-secondary mt-4 mr-2">
+              Reset
             </button>
           </form>
         </div>
