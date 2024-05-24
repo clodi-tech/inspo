@@ -13,5 +13,5 @@
 
 ## Phase 3
 
-- [ ] category/tags
-- [ ] search
+- [x] category/tags
+- [x] search
