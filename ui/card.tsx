@@ -40,6 +40,7 @@ export default function Card({ content }: { content: any }) {
       <dialog id="edit_card" className="modal">
         <div className="modal-box">
           <form action={saveCard}>
+            <input type="hidden" name="id" value={content.id} />
             <label className="form-control w-full max-w-sm">
               <div className="label">
                 <span className="label-text">Title</span>
