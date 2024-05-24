@@ -46,6 +46,7 @@ export default function Card({ content }: { content: any }) {
               </div>
               <input
                 type="text"
+                name="title"
                 defaultValue={content.title}
                 className="input input-bordered w-full max-w-sm"
               />
@@ -55,6 +56,7 @@ export default function Card({ content }: { content: any }) {
                 <span className="label-text">Description</span>
               </div>
               <textarea
+                name="description"
                 defaultValue={content.description}
                 className="textarea textarea-bordered h-24"
               />
@@ -65,6 +67,7 @@ export default function Card({ content }: { content: any }) {
               </div>
               <input
                 type="text"
+                name="url"
                 defaultValue={content.url}
                 className="input input-bordered w-full max-w-sm"
               />
@@ -75,6 +78,7 @@ export default function Card({ content }: { content: any }) {
               </div>
               <input
                 type="text"
+                name="tag"
                 defaultValue={content.tag}
                 className="input input-bordered w-full max-w-sm"
               />
@@ -85,6 +89,7 @@ export default function Card({ content }: { content: any }) {
               </div>
               <input
                 type="text"
+                name="image"
                 defaultValue={content.image}
                 className="input input-bordered w-full max-w-sm"
               />
