@@ -3,14 +3,13 @@ import Delete from "./delete";
 import { saveCard } from "@/utils/actions";
 
 export default function Card({ content }: { content: any }) {
+  const modalId = `edit_card_${content.id}`;
   return (
     <>
       <div
         className="card max-w-sm bg-base-100 shadow-xl image-full"
         onClick={() => {
-          const modal = document.getElementById(
-            "edit_card"
-          ) as HTMLDialogElement;
+          const modal = document.getElementById(modalId) as HTMLDialogElement;
           if (modal) {
             modal.showModal();
           }
@@ -37,7 +36,7 @@ export default function Card({ content }: { content: any }) {
           </div>
         </div>
       </div>
-      <dialog id="edit_card" className="modal">
+      <dialog id={modalId} className="modal">
         <div className="modal-box">
           <form action={saveCard}>
             <input type="hidden" name="id" value={content.id} />
